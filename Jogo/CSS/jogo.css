@@ -1,0 +1,43 @@
+/*CSS*/
+
+.fixed-header{
+    width: 100%;
+    position: fixed;        
+    background: rgb(125, 202, 207);
+    padding: 10px 0;
+    color: #fff;
+}
+.fixed-header{
+    top: 0;
+    
+}
+body{   
+    background: rgb(217, 246, 248);    
+    padding-top: 100px;
+    padding-bottom: 40px;
+
+ 
+
+}
+
+.trbd{
+    border-bottom: 1px solid black;
+}
+.tdbd{
+    border-right: solid 1px black;
+}
+table{
+    width: 60%;
+    height: 60%
+}
+
+.btn-color-blue{
+    background-color: #174d52;
+}
+
+td {
+    width: 163px;
+    height: 173px;
+    text-align: center;
+    cursor: pointer;
+}
