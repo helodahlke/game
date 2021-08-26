@@ -16,14 +16,12 @@ body{
     padding-top: 100px;
     padding-bottom: 40px;
 
- 
-
 }
 
-.trbd{
+.table-border{
     border-bottom: 1px solid black;
 }
-.tdbd{
+.other-border {
     border-right: solid 1px black;
 }
 table{
