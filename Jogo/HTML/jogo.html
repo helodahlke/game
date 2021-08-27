@@ -16,13 +16,11 @@
                 <table class="center">
                     <tbody>
                         <tr v-for="trs in 3" class="table-border">
-                            <td v-for="tds in 3" class="other-border" linha="0" coluna="0" :key="trs + tds">
-                                <div v-show="clicked" v-on:click="clicked()">
-                                    <img v-if="isCircle" v-bind:src="src" v-bind:alt="alt" style="width: 62px; height: 62px;"/>
-                                    <img v-else v-bind:src="src1" v-bind:alt="alt2"/></td>
+                            <td v-for="tds in 3" class="other-border">
+                                <div v-show="clicked" :linha="trs" :coluna="tds">
+                                    <img type="image" v-on:click="whichImage"  v-bind:src="src" v-bind:alt="alt" style="width: 62px; height: 62px;"/>
                                 </div>
                         </tr>
-                        
                     </tbody>
                 </table>
                
@@ -34,18 +32,22 @@
             el: "#app",
             data: {
                 header: "Game",
+                changed: false,
+                clicked: true,
+                ativo: false,
                 src: "../pics/direct.png",
-                alt: "kkkk",
-                src1: "../pics/circle.png",
-                alt1: "kkkkk",
-                clicked: false,
-                isCircle: true,
+                alt: "teste",
                 methods: {
-                    clicked: function () {
-                        console.log(this.clicked)
-                        return this.clicked = !this.clicked;
+                    whichImage(){
+                        this.src =  "../pics/circle.png";
+
                     }
+                   
                 }
+
+
+
+
             }
         })
     </script>
