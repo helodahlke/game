@@ -17,7 +17,7 @@
                     <tbody>
                         <tr v-for="trs in 3" class="table-border">
                             <td v-for="tds in 3" class="other-border">
-                                <img type="image" :linha="trs" :coluna="tds" v-on:click="whichImage" v-bind:src="src" v-bind:alt="alt" style="width: 62px; height: 62px;"/>
+                                <img type="image" :linha="trs - 1" :coluna="tds - 1" v-on:click="whichImage" v-bind:src="src" v-bind:alt="alt" style="width: 62px; height: 62px;"/>
                             </td>
                         </tr>
                     </tbody>
@@ -41,17 +41,27 @@
                     const line = event.target.attributes[1].value;
                     const column =  event.target.attributes[2].value;
                     const currentSrc = event.target.currentSrc;
+                    var board = new Array(3);
+                    board[0] = new Array(3);
+                    board[1] = new Array(3);
+                    board[2] = new Array(3);
+                    
                     
                     if(this.player1){
-                        event.target.src = "../pics/direct.png";
+                        board[line][column] = 1;
                         this.player1 = false;
+                        event.target.src = "../pics/direct.png";
                     } else {
+                        board[line][column] = 1;
                         this.player1 = true 
                         event.target.src = "../pics/circle.png";
                     }
-                     //: "../pics/circle.png");
-                    
-                } 
+                   // validateWinner();
+                   console.log(board)
+                },
+                //validateWinner(){
+
+                //}
             }
         })
     </script>
