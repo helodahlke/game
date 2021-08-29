@@ -17,13 +17,11 @@
                     <tbody>
                         <tr v-for="trs in 3" class="table-border">
                             <td v-for="tds in 3" class="other-border">
-                                <div v-show="clicked" :linha="trs" :coluna="tds">
-                                    <img type="image" v-on:click="whichImage"  v-bind:src="src" v-bind:alt="alt" style="width: 62px; height: 62px;"/>
-                                </div>
+                                <img type="image" :linha="trs" :coluna="tds" v-on:click="whichImage" v-bind:src="src" v-bind:alt="alt" style="width: 62px; height: 62px;"/>
+                            </td>
                         </tr>
                     </tbody>
-                </table>
-               
+                </table>    
             </div>
         </div>
     </body>
@@ -33,21 +31,27 @@
             data: {
                 header: "Game",
                 changed: false,
-                clicked: true,
+                player1: true, //if it is false means it's player 2
                 ativo: false,
-                src: "../pics/direct.png",
-                alt: "teste",
-                methods: {
-                    whichImage(){
-                        this.src =  "../pics/circle.png";
-
+                src: "../pics/checkbox_empty.png",
+                alt: "teste"
+            },
+            methods:{
+                whichImage(event) {
+                    const line = event.target.attributes[1].value;
+                    const column =  event.target.attributes[2].value;
+                    const currentSrc = event.target.currentSrc;
+                    
+                    if(this.player1){
+                        event.target.src = "../pics/direct.png";
+                        this.player1 = false;
+                    } else {
+                        this.player1 = true 
+                        event.target.src = "../pics/circle.png";
                     }
-                   
-                }
-
-
-
-
+                     //: "../pics/circle.png");
+                    
+                } 
             }
         })
     </script>
