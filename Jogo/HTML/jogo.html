@@ -26,6 +26,12 @@
         </div>
     </body>
     <script>
+        /*
+        *  For my validation i'll
+        *  use null as an empty position,
+        *  1 for player 1 and 0 for player 2
+        
+        */
         new Vue({
             el: "#app",
             data: {
@@ -34,34 +40,50 @@
                 player1: true, //if it is false means it's player 2
                 ativo: false,
                 src: "../pics/checkbox_empty.png",
-                alt: "teste"
+                alt: "teste",
+                board: [[null, null, null], [null, null, null], [null, null, null]]
             },
             methods:{
-                whichImage(event) {
+                whichImage: function(event) {
                     const line = event.target.attributes[1].value;
                     const column =  event.target.attributes[2].value;
                     const currentSrc = event.target.currentSrc;
-                    var board = new Array(3);
-                    board[0] = new Array(3);
-                    board[1] = new Array(3);
-                    board[2] = new Array(3);
-                    
-                    
+
+                
                     if(this.player1){
-                        board[line][column] = 1;
+                        this.board[line][column] = 1;
                         this.player1 = false;
                         event.target.src = "../pics/direct.png";
                     } else {
-                        board[line][column] = 1;
+                        this.board[line][column] = 0;
                         this.player1 = true 
                         event.target.src = "../pics/circle.png";
                     }
-                   // validateWinner();
-                   console.log(board)
-                },
-                //validateWinner(){
 
-                //}
+                
+                    this.validateWinner(this.board);
+                },
+                validateWinner: function(board){
+                    const reducer = (accumulator, currentValue) => accumulator + currentValue;
+                    var total1 = board[0].reduce(reducer);
+                    var total2 = board[1].reduce(reducer);
+                    var total3 = board[2].reduce(reducer);
+                    
+                    
+                    if(total1 == 3 || total2 == 3 || total3 == 3){
+                        alert("Ganhou")
+                    }
+                  /*
+                    var total = board[1].reduce((acumulador, numero, indice, original) => {
+                        if(indice == 3)             
+                            alert("Ganhou")
+                    
+                    })
+                    var total = board[2].reduce((acumulador, numero, indice, original) => {
+                        if(indice == 3)             
+                            alert("Ganhou")
+                    }) */
+                }
             }
         })
     </script>
