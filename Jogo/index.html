@@ -1,9 +1,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../CSS/jogo.css">
-        <script src="../JS/jogo.js"></script>
-        <script src="../JS/vue.js"></script>
+        <link rel="stylesheet" href="./CSS/jogo.css">
+        <script src="./JS/jogo.js"></script>
+        <script src="./JS/vue.js"></script>
     </head>
     <body>
         <div id="app">
@@ -12,7 +12,7 @@
                     {{ header }}
                 </div>
             </div>
-            <div>   
+            <div>
                 <table class="center">
                     <tbody>
                         <tr v-for="trs in 3" class="table-border">
@@ -21,7 +21,7 @@
                             </td>
                         </tr>
                     </tbody>
-                </table>    
+                </table>
             </div>
         </div>
     </body>
@@ -30,7 +30,7 @@
         *  For my validation i'll
         *  use null as an empty position,
         *  1 for player 1 and 0 for player 2
-        
+
         */
         new Vue({
             el: "#app",
@@ -39,7 +39,7 @@
                 changed: false,
                 player1: true, //if it is false means it's player 2
                 ativo: false,
-                src: "../pics/checkbox_empty.png",
+                src: "./pics/checkbox_empty.png",
                 alt: "teste",
                 board: [[null, null, null], [null, null, null], [null, null, null]]
             },
@@ -49,18 +49,18 @@
                     const column =  event.target.attributes[2].value;
                     const currentSrc = event.target.currentSrc;
 
-                
+
                     if(this.player1){
                         this.board[line][column] = 1;
                         this.player1 = false;
-                        event.target.src = "../pics/direct.png";
+                        event.target.src = "./pics/direct.png";
                     } else {
                         this.board[line][column] = 0;
-                        this.player1 = true 
-                        event.target.src = "../pics/circle.png";
+                        this.player1 = true
+                        event.target.src = "./pics/circle.png";
                     }
 
-                
+
                     this.validateWinner(this.board);
                 },
                 validateWinner: function(board){
@@ -68,19 +68,19 @@
                     var total1 = board[0].reduce(reducer);
                     var total2 = board[1].reduce(reducer);
                     var total3 = board[2].reduce(reducer);
-                    
-                    
+
+
                     if(total1 == 3 || total2 == 3 || total3 == 3){
                         alert("Ganhou")
                     }
                   /*
                     var total = board[1].reduce((acumulador, numero, indice, original) => {
-                        if(indice == 3)             
+                        if(indice == 3)
                             alert("Ganhou")
-                    
+
                     })
                     var total = board[2].reduce((acumulador, numero, indice, original) => {
-                        if(indice == 3)             
+                        if(indice == 3)
                             alert("Ganhou")
                     }) */
                 }
