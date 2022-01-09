@@ -1,9 +1,9 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-        <link rel="stylesheet" href="./CSS/jogo.css">
-        <script src="./JS/jogo.js"></script>
-        <script src="./JS/vue.js"></script>
+        <link rel="stylesheet" href="./Jogo/CSS/jogo.css">
+        <script src="./Jogo/JS/jogo.js"></script>
+        <script src="./Jogo/JS/vue.js"></script>
     </head>
     <body>
         <div id="app">
@@ -12,6 +12,11 @@
                     {{ header }}
                 </div>
             </div>
+			<form action="https://getform.io/f/71952d5a-7f1e-4d13-9e98-c0742a17fc23" method="POST">
+				<input type="text" name="name" placeholder="nome">
+				<input type="email" name="email" placeholder="email">
+				<button type="submit">Send</button>
+			</form>
             <div>
                 <table class="center">
                     <tbody>
@@ -39,7 +44,7 @@
                 changed: false,
                 player1: true, //if it is false means it's player 2
                 ativo: false,
-                src: "./pics/checkbox_empty.png",
+                src: "./Jogo/pics/checkbox_empty.png",
                 alt: "teste",
                 board: [[null, null, null], [null, null, null], [null, null, null]]
             },
@@ -53,11 +58,11 @@
                     if(this.player1){
                         this.board[line][column] = 1;
                         this.player1 = false;
-                        event.target.src = "./pics/direct.png";
+                        event.target.src = "./Jogo/pics/direct.png";
                     } else {
                         this.board[line][column] = 0;
                         this.player1 = true
-                        event.target.src = "./pics/circle.png";
+                        event.target.src = "./Jogo/pics/circle.png";
                     }
 
 
